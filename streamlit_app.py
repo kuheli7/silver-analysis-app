@@ -70,7 +70,7 @@ with tab2:
             india_merged = india_gdf.merge(df_silver, left_on='ST_NM', right_on='State', how='left')
             india_merged['Silver_Purchased_kg'] = india_merged['Silver_Purchased_kg'].fillna(0)
             fig, ax = plt.subplots(figsize=(15, 12))
-            cmap = plt.cm.get_cmap('YlOrRd')
+            cmap = plt.colormaps.get_cmap('YlOrRd')
             cmap.set_bad('white')
             india_merged.plot(ax=ax, column='Silver_Purchased_kg', cmap=cmap, edgecolor='black', linewidth=0.8, legend=True, legend_kwds={'label': "Silver Purchased (kg)", 'orientation': "horizontal"})
             for x, y, label, value in zip(india_merged.geometry.centroid.x, india_merged.geometry.centroid.y, india_merged['ST_NM'], india_merged['Silver_Purchased_kg']):
